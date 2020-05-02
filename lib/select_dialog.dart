@@ -75,6 +75,7 @@ class SelectDialog<T> extends StatefulWidget {
         return AlertDialog(
           backgroundColor: backgroundColor,
           title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 label ?? "",
