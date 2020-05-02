@@ -54,6 +54,7 @@ class SelectDialog<T> extends StatefulWidget {
     BuildContext context, {
     List<T> items,
     String label,
+    Function onClose,
     T selectedValue,
     bool showSearchBox,
     Future<List<T>> Function(String text) onFind,
@@ -73,9 +74,23 @@ class SelectDialog<T> extends StatefulWidget {
       builder: (context) {
         return AlertDialog(
           backgroundColor: backgroundColor,
-          title: Text(
-            label ?? "",
-            style: titleStyle,
+          title: Row(
+            children: [
+              Text(
+                label ?? "",
+                style: titleStyle,
+              ),
+              Visibility(
+                visible: onClose != null,
+                child: InkWell(
+                  child: Icon(
+                    Icons.close,
+                    color: Colors.black54,
+                  ),
+                  onTap: onClose,
+                ),
+              )
+            ],
           ),
           content: SelectDialog<T>(
             selectedValue: selectedValue,
@@ -157,9 +172,9 @@ class _SelectDialogState<T> extends State<SelectDialog<T>> {
                 onChanged: bloc.onTextChanged,
                 decoration: widget.searchBoxDecoration ??
                     InputDecoration(
-                      hintText: "Find",
-                      contentPadding: const EdgeInsets.all(2.0),
-                    ),
+                        hintText: "Buscar",
+                        contentPadding: const EdgeInsets.all(2.0),
+                        icon: Icon(Icons.search)),
               ),
             ),
           Expanded(
