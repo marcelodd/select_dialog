@@ -199,10 +199,11 @@ class _SelectDialogState<T> extends State<SelectDialog<T>> {
                     if (widget.emptyBuilder != null) {
                       return widget.emptyBuilder(context);
                     } else {
-                      return Center(child: Text("No data found"));
+                      return Center(
+                          child: Text("Não há resultado para a busca"));
                     }
                   }
-                  return ListView.builder(
+                  return ListView.separated(
                     itemCount: snapshot.data.length,
                     itemBuilder: (context, index) {
                       var item = snapshot.data[index];
@@ -228,6 +229,7 @@ class _SelectDialogState<T> extends State<SelectDialog<T>> {
                           },
                         );
                     },
+                    separatorBuilder: (_, i) => Divider(),
                   );
                 },
               ),
