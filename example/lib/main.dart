@@ -57,6 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 SelectDialog.showModal<String>(
                   context,
                   label: "Simple Example",
+                  onClose: () {},
                   titleStyle: TextStyle(color: Colors.brown),
                   showSearchBox: false,
                   selectedValue: ex1,
