@@ -77,10 +77,11 @@ class SelectDialog<T> extends StatefulWidget {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                label ?? "",
-                style: titleStyle,
-              ),
+              Expanded(
+                  child: Text(
+                    label ?? "",
+                    style: titleStyle,
+              )),
               Visibility(
                 visible: onClose != null,
                 child: InkWell(
