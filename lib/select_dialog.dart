@@ -168,14 +168,14 @@ class _SelectDialogState<T> extends State<SelectDialog<T>> {
         children: <Widget>[
           if (widget.showSearchBox ?? true)
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              //padding: const EdgeInsets.all(8.0),
               child: TextField(
                 focusNode: bloc.focusNode,
                 onChanged: bloc.onTextChanged,
                 decoration: widget.searchBoxDecoration ??
                     InputDecoration(
                         hintText: "Buscar",
-                        contentPadding: const EdgeInsets.all(2.0),
+                        //contentPadding: const EdgeInsets.all(2.0),
                         prefixIcon: Icon(Icons.search)),
               ),
             ),
