@@ -176,7 +176,7 @@ class _SelectDialogState<T> extends State<SelectDialog<T>> {
                     InputDecoration(
                         hintText: "Buscar",
                         contentPadding: const EdgeInsets.all(2.0),
-                        icon: Icon(Icons.search)),
+                        prefixIcon: Icon(Icons.search)),
               ),
             ),
           Expanded(
