@@ -167,9 +167,7 @@ class _SelectDialogState<T> extends State<SelectDialog<T>> {
       child: Column(
         children: <Widget>[
           if (widget.showSearchBox ?? true)
-            Padding(
-              //padding: const EdgeInsets.all(8.0),
-              child: TextField(
+            TextField(
                 focusNode: bloc.focusNode,
                 onChanged: bloc.onTextChanged,
                 decoration: widget.searchBoxDecoration ??
@@ -178,7 +176,6 @@ class _SelectDialogState<T> extends State<SelectDialog<T>> {
                         //contentPadding: const EdgeInsets.all(2.0),
                         prefixIcon: Icon(Icons.search)),
               ),
-            ),
           Expanded(
             child: Scrollbar(
               child: StreamBuilder<List<T>>(
