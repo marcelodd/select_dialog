@@ -77,10 +77,11 @@ class SelectDialog<T> extends StatefulWidget {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                label ?? "",
-                style: titleStyle,
-              ),
+              Expanded(
+                  child: Text(
+                    label ?? "",
+                    style: titleStyle,
+              )),
               Visibility(
                 visible: onClose != null,
                 child: InkWell(
@@ -166,18 +167,15 @@ class _SelectDialogState<T> extends State<SelectDialog<T>> {
       child: Column(
         children: <Widget>[
           if (widget.showSearchBox ?? true)
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextField(
+            TextField(
                 focusNode: bloc.focusNode,
                 onChanged: bloc.onTextChanged,
                 decoration: widget.searchBoxDecoration ??
                     InputDecoration(
                         hintText: "Buscar",
-                        contentPadding: const EdgeInsets.all(2.0),
-                        icon: Icon(Icons.search)),
+                        //contentPadding: const EdgeInsets.all(2.0),
+                        prefixIcon: Icon(Icons.search)),
               ),
-            ),
           Expanded(
             child: Scrollbar(
               child: StreamBuilder<List<T>>(
