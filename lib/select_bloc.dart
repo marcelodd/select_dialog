@@ -1,3 +1,4 @@
+import 'package:diacritic/diacritic.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -15,8 +16,7 @@ class SelectOneBloc<T> {
     _list$ = BehaviorSubject.seeded(items);
 
     _filteredListOfflineOut =
-        
-       CombineLatestStream.combine2(_list$, _filter$, filter);
+        CombineLatestStream.combine2(_list$, _filter$, filter);
 
     _filteredListOnlineOut = _filter$
         .where((_) => onFind != null)
@@ -37,7 +37,9 @@ class SelectOneBloc<T> {
         ?.where(
           (item) =>
               _filter$.value == null ||
-              item.toString().toLowerCase().contains(_filter$.value) ||
+              removeDiacritics(item.toString())
+                  .toLowerCase()
+                  .contains(removeDiacritics(_filter$.value)) ||
               _filter$.value.isEmpty,
         )
         ?.toList();
